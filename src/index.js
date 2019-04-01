@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import ComponentFindDOMNodeExample from './ComponentFindDOMNodeExample';
+import ComponentLifeCycleExample from './ComponentLifeCycleExample';
 
-ReactDOM.render(<ComponentFindDOMNodeExample />, document.getElementById('root'));
+ReactDOM.render(<ComponentLifeCycleExample />, document.getElementById('root'));
