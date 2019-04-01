@@ -1,23 +1,40 @@
 import React, {Component} from 'react';
 
-class ComponentForceUpdateExample extends Component {
-  constructor(){
-    super();
+class FormInputExample extends Component {
+  constructor(props){
+    super(props);
 
-    this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    this.state = {
+      data : 'Initial data...'
+    };
+
+    this.updateState = this.updateState.bind(this);
   };
 
-  forceUpdateHandler() {
-    this.forceUpdate();
+  updateState(e) {
+    this.setState({data : e.target.value});
   };
   render() {
     return (
         <div>
-          <button onClick={this.forceUpdateHandler}>FORCE UPDATE</button>
-          <h4>Random Number : {Math.random()} </h4>
+            <Content myDataProp = {this.state.data}
+                     updateStateProp = {this.updateState} />
         </div>
     );
   }
 }
 
-export default ComponentForceUpdateExample;
+class Content extends Component {
+
+  render() {
+    return(
+        <div>
+          <input type = "text" value = {this.props.myDataProp}
+          onChange = {this.props.updateStateProp} />
+          <h3>{this.props.myDataProp}</h3>
+        </div>
+    );
+  }
+}
+
+export default FormInputExample;
