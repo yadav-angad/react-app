@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import ComponentLifeCycleExample from './ComponentLifeCycleExample';
+import './css/index.css';
+import App from './App';
 
-ReactDOM.render(<ComponentLifeCycleExample />, document.getElementById('root'));
-
-// setTimeout(() => {
-//   ReactDOM.unmountComponentAtNode(document.getElementById('root'));}, 10000);
+ReactDOM.render(<App />, document.getElementById('root'));

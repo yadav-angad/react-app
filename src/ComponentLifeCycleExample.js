@@ -29,7 +29,7 @@ class Content extends React.Component {
     console.log('Component DID MOUNT!')
   }
   componentWillReceiveProps(newProps) {
-    console.log('Component WILL RECIEVE PROPS!')
+    console.log('Component WILL RECEIVE PROPS!')
   }
   shouldComponentUpdate(newProps, newState) {
     return true;
