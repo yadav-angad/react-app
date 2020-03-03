@@ -42,6 +42,7 @@
     width: 30%;
     background-color: green;
 }
+
 .alignRight {
     text-align: right;
 }
@@ -53,7 +54,8 @@
     width: 30%;
     background-color: red;
 }
-.vCenter{
+
+.vCenter {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -69,6 +71,17 @@
     background-color: yellow;
 }
 
-.width20Percent{
+.width20Percent {
     float: right;
+}
+
+.width95Percent {
+    width: 95%;
+}
+
+.unStyled-button {
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
 }

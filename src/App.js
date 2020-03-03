@@ -19,6 +19,10 @@ class App extends Component {
     const alertType = ["info", "error", "alert", "success"];
     let result = alertType[Math.floor(Math.random() * alertType.length)];
     this.setState({value: result});
+    let alertContainer = document.getElementById("alertContainer");
+    if (alertContainer !== null) {
+      alertContainer.style.display = "block";
+    }
   };
 
   render() {

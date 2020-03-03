@@ -8,43 +8,37 @@ class NotificationComponent extends Component {
   render() {
     let notificationType = this.props.notificationType;
     let notificationDiv;
-
+    let styleName = notificationType + " vCenter";
     switch (notificationType) {
       case "info":
-        notificationDiv = <div>
-          <div className="info vCenter">
-            <span>Info message</span>
-            <button className="alignRight">X</button>
-          </div>
-        </div>;
+        notificationDiv = <span className="width95Percent">Info message</span>;
         break;
       case "error":
-        notificationDiv = <div>
-          <div className="error vCenter">
-            <span>Error message</span>
-            <button className="alignRight">X</button>
-          </div>
-        </div>;
+        notificationDiv = <span className="width95Percent">Error message</span>;
         break;
       case "alert":
-        notificationDiv = <div>
-          <div className="alert vCenter"><span>Warning message</span>
-            <button className="alignRight">X</button>
-          </div>
-        </div>;
+        notificationDiv = <span className="width95Percent">Warning message</span>;
         break;
       case "success":
-        notificationDiv = <div>
-          <div className="success vCenter"><span>Success message</span>
-            <button className="alignRight">X</button>
-          </div>
-        </div>;
+        notificationDiv = <span className="width95Percent">Success message</span>;
         break;
     }
 
+    function hide() {
+      let alertContainer = document.getElementById("alertContainer");
+      if (alertContainer !== null) {
+        alertContainer.style.display = "none";
+      }
+    }
+
     return (
-        <div>
-          {notificationDiv}
+        <div id="alertContainer">
+          <div className={styleName}>
+            {notificationDiv}
+            <button className="unStyled-button" onClick={() => {
+              hide();
+            }}>X</button>
+          </div>
         </div>
     );
   }
