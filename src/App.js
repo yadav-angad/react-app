@@ -5,7 +5,6 @@ import ButtonComponent from "./Component/ButtonComponent";
 import HeaderComponent from "./Component/HeaderComponent";
 import ContentComponent from "./Component/ContentComponent";
 import FooterComponent from "./Component/FooterComponent";
-import NotificationComponent from "./Component/NotificationComponent";
 
 class App extends Component {
   constructor(props) {
@@ -19,8 +18,7 @@ class App extends Component {
   updateState() {
     const alertType = ["info", "error", "alert", "success"];
     let result = alertType[Math.floor(Math.random() * alertType.length)];
-    console.log('result : ' + result);
-    this.setState({value : result});
+    this.setState({value: result});
   };
 
   render() {
