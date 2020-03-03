@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './css/App.css';
 import './css/style.css'
-import ButtonComponent from "./Component/ButtonComponent";
 import HeaderComponent from "./Component/HeaderComponent";
 import ContentComponent from "./Component/ContentComponent";
 import FooterComponent from "./Component/FooterComponent";
@@ -9,31 +8,13 @@ import FooterComponent from "./Component/FooterComponent";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: ''
-    };
-    this.updateState = this.updateState.bind(this);
   }
-
-  updateState() {
-    const alertType = ["info", "error", "alert", "success"];
-    let result = alertType[Math.floor(Math.random() * alertType.length)];
-    this.setState({value: result});
-    let alertContainer = document.getElementById("alertContainer");
-    if (alertContainer !== null) {
-      alertContainer.style.display = "block";
-    }
-  };
 
   render() {
     return (
         <div align="center">
           <HeaderComponent headerName="Training Site"/>
-          <ButtonComponent onButtonClick={() => {
-            this.updateState();
-          }}/>
-          <br/>
-          <ContentComponent content={this.state.value} notificationType={this.state.value}/>
+          <ContentComponent content="Hello World !!!"/>
           <FooterComponent/>
         </div>
     );
