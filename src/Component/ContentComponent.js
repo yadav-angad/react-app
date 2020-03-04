@@ -3,7 +3,6 @@ import ButtonComponent from "./ButtonComponent";
 import userImage from "../image/user-icon.png"
 
 class ContentComponent extends Component {
-  items;
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +12,8 @@ class ContentComponent extends Component {
       userPost: [],
       userPostList:[],
       startStopRenderPost: true,
-      startStopButtonName: 'Start / Stop Post'
+      startStopButtonName: 'Start / Stop Post',
+      previousSelectedUserId : null
     };
   }
 
@@ -36,13 +36,19 @@ class ContentComponent extends Component {
 
   fetchUserPost(id) {
     this.resetInterval();
+    if(this.state.previousSelectedUserId !== null) {
+      console.log('==>' + this.state.previousSelectedUserId);
+      document.getElementById(this.state.previousSelectedUserId).style.backgroundColor = "#f2f2f2";
+    }
     fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
         .then(res => res.json())
         .then((data) => {
           document.getElementById("userPostButton").style.display = "block";
           document.getElementById("userPostList").style.display = "block";
+          document.getElementById(id).style.backgroundColor = "#888888";
           this.setState({
-            userPost: data
+            userPost: data,
+            previousSelectedUserId: id
           });
         }).catch(console.log);
   };
@@ -63,7 +69,7 @@ class ContentComponent extends Component {
           <a onClick={() => {
             this.fetchUserPost(id);
           }}>
-            <div className="divHover userDetailList leftNavContainer" key={id}>
+            <div id={id} className="divHover userDetailList leftNavContainer" key={id}>
               <img src={userImage} alt="user image" className="imageSize"/>
               <span> {name}</span>
             </div>
@@ -120,7 +126,7 @@ class ContentComponent extends Component {
         <div className="content divLeftAlign">
           <div className="width30Percent leftNavContainer">
             <div className="padding-left"><span className="userHeaderList">Users</span></div>
-            <div className="textAlignLeft">
+            <div className="textAlignLeft boldFont">
               <div>{this.renderUserList()}</div>
             </div>
           </div>
