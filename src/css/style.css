@@ -36,6 +36,7 @@
 .content {
     height: 640px;
     overflow: auto;
+    width: 100%;
     background-color: #cccccc;
 }
 
@@ -60,8 +61,31 @@
     background-color: green;
 }
 
-.alignRight {
+.textAlignRight {
     text-align: right;
+}
+
+.textAlignLeft {
+    text-align: left;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.userHeaderList {
+    font-weight: bold;
+    text-align: left;
+    font-size: large;
+}
+
+.divLeftAlign {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .error {
@@ -123,6 +147,10 @@
     width: 40%;
 }
 
+.width50Percent {
+    width: 50%;
+}
+
 .width80Percent {
     width: 80%;
 }
@@ -176,6 +204,23 @@
     font-family: arial, sans-serif;
 }
 
+.userDetailList {
+    text-align: left;
+    border-collapse: collapse;
+    padding-left: 10px;
+    border-radius: 10px;
+}
+
+.userPost {
+    text-align: left;
+    border-collapse: collapse;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #cccccc;
+    padding: 8px;
+
+}
+
 .userDetails {
     text-align: center;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -219,8 +264,51 @@
     cursor: pointer;
     border-radius: 12px;
     outline: none;
+    width: 150px;
 }
 
 .button:hover {
     background-color: #F4D03F;
+}
+
+.clearDiv {
+    clear: both;
+}
+
+.leftNavContainer {
+    background-color: #f2f2f2;
+    margin: 5px;
+}
+
+.rightContainer {
+    background-color: #f2f2f2;
+    margin: 5px;
+}
+
+.middleContainer {
+    background-color: #f2f2f2;
+    margin: 5px;
+    overflow: auto;
+    height: calc(100% - 50px - 50px);
+}
+
+.padding-left {
+    padding: 10px;
+}
+
+.divHover:hover {
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+.boldFont {
+    font-weight: bold;
+}
+
+.divDisplayNone {
+    display: none;
+}
+
+.divDisplayBlock {
+    display: block;
 }

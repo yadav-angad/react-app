@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import NotificationComponent from "./NotificationComponent";
 import ButtonComponent from "./ButtonComponent";
 
 class ContentComponent extends Component {
@@ -8,76 +7,94 @@ class ContentComponent extends Component {
     this.state = {
       notificationType: '',
       userDetails: [],
-      header:["ID", "Name", "UserName", "Email"],
-      headerElement: ''
+      header: ["ID", "Name", "UserName", "Email"],
+      userPost: []
     };
-    this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
     console.log("componentDidMount called");
+    this.fetchUserList();
   }
 
-  updateState() {
-    const alertType = ["info", "error", "alert", "success"];
-    let result = alertType[Math.floor(Math.random() * alertType.length)];
-    this.setState({notificationType: result});
-    let alertContainer = document.getElementById("alertContainer");
-    if (alertContainer !== null) {
-      alertContainer.style.display = "block";
-      fetch('http://jsonplaceholder.typicode.com/users')
-          .then(res => res.json())
-          .then((data) => {
-            let result =  this.state.header.map((key, index) => {
-              return <th key={index}>{key.toUpperCase()}</th>
-            });
-            this.setState({
-              userDetails: data,
-              headerElement: result
-            });
-            this.renderTableHeader();
-            this.renderTableData(this.state.userDetails);
-          })
-          .catch(console.log);
-    }
+  fetchUserList() {
+    fetch('http://jsonplaceholder.typicode.com/users')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({
+            userDetails: data
+          });
+          this.renderUserList(this.state.userDetails);
+        })
+        .catch(console.log);
   };
 
-  renderTableHeader() {
+  fetchUserPost(id) {
+    fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
+        .then(res => res.json())
+        .then((data) => {
+          console.log(data);
+          document.getElementById("userPostButton").style.display = "block";
+          this.setState({
+            userPost: data
+          });
+          this.renderUserPost();
+        })
+        .catch(console.log);
+  };
 
-  }
 
-  renderTableData() {
+  renderUserList() {
     return this.state.userDetails.map((user, index) => {
-      const {id, name, username, email} = user;
+      console.log('renderUserList called');
+      const {id, name} = user;
       return (
-          <tr key={id}>
-            <td className="colDiv10">{id}</td>
-            <td className="colDiv30">{name}</td>
-            <td className="colDiv30">{username}</td>
-            <td className="colDiv30">{email}</td>
-          </tr>
+          <a onClick={() => {
+            this.fetchUserPost(id);
+          }}>
+            <li className="divHover userDetailList leftNavContainer" key={id}>{name}</li>
+          </a>
+      )
+    })
+  };
+
+  renderUserPost() {
+    return this.state.userPost.map((userPost, index) => {
+      const {id, title, body} = userPost;
+      return (
+          <div className="divHover userPost" key={id}>
+            <div><label className="boldFont">Title: </label>{title}</div>
+            <div><label className="boldFont">Body: </label>{body}</div>
+          </div>
       )
     })
   };
 
   render() {
     return (
-        <div className="content">
-          <br/>
-          <ButtonComponent name="CLICK ME" onButtonClick={() => {
-            this.updateState();
-          }}/>
-          <br/>
-          <table className='userDetails'>
-            <thead>
-              {this.state.headerElement}
-            </thead>
-            <tbody>
-              {this.renderTableData()}
-            </tbody>
-          </table>
-          <br />
-          <NotificationComponent notificationType={this.state.notificationType}/>
+        <div className="content divLeftAlign">
+          <div className="width30Percent leftNavContainer">
+            <div className="padding-left"><span className="userHeaderList">Users</span></div>
+            <div className="textAlignLeft">
+              <div>{this.renderUserList()}</div>
+            </div>
+          </div>
+          <div className="width50Percent middleContainer">
+            {this.renderUserPost()}
+          </div>
+          <div className="width20Percent textAlignCenter rightContainer">
+            <div className="divDisplayNone" id="userPostButton">
+              <ButtonComponent name="Show Post" onButtonClick={() => {
+                alert("Show Post");
+              }}/>
+              <ButtonComponent name="Start / Stop Post" onButtonClick={() => {
+                alert("Start / Stop Post");
+              }}/>
+              <ButtonComponent name="Hide Post" onButtonClick={() => {
+                alert("Hide Post");
+              }}/>
+              </div>
+          </div>
         </div>
     );
   }
