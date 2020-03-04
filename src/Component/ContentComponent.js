@@ -2,13 +2,17 @@ import React, {Component} from "react";
 import ButtonComponent from "./ButtonComponent";
 
 class ContentComponent extends Component {
+  items;
   constructor(props) {
     super(props);
     this.state = {
       notificationType: '',
       userDetails: [],
       header: ["ID", "Name", "UserName", "Email"],
-      userPost: []
+      userPost: [],
+      userPostList:[],
+      startStopRenderPost: true,
+      startStopButtonName: 'Stop Post'
     };
   }
 
@@ -30,23 +34,25 @@ class ContentComponent extends Component {
   };
 
   fetchUserPost(id) {
+    this.resetInterval();
     fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
         .then(res => res.json())
         .then((data) => {
-          console.log(data);
           document.getElementById("userPostButton").style.display = "block";
+          document.getElementById("userPost").style.display = "block";
           this.setState({
             userPost: data
           });
-          this.renderUserPost();
-        })
-        .catch(console.log);
+        }).catch(console.log);
   };
 
+  resetInterval() {
+    clearInterval(this.state.timer);
+    document.getElementById("userPost").style.display = "none";
+  }
 
   renderUserList() {
     return this.state.userDetails.map((user, index) => {
-      console.log('renderUserList called');
       const {id, name} = user;
       return (
           <a onClick={() => {
@@ -55,20 +61,50 @@ class ContentComponent extends Component {
             <li className="divHover userDetailList leftNavContainer" key={id}>{name}</li>
           </a>
       )
-    })
-  };
+    });
+  }
 
   renderUserPost() {
-    return this.state.userPost.map((userPost, index) => {
-      const {id, title, body} = userPost;
-      return (
-          <div className="divHover userPost" key={id}>
-            <div><label className="boldFont">Title: </label>{title}</div>
-            <div><label className="boldFont">Body: </label>{body}</div>
-          </div>
-      )
-    })
-  };
+    let counter = 0;
+    let maxLength = this.state.userPost.length;
+    let val = [];
+    let timer = setInterval(() => {
+      if(counter < maxLength && !!this.state.startStopRenderPost) {
+        val[counter] = this.getUserPostOneByOne(this.state.userPost[counter]);
+        counter++;
+        this.setState({userPostList: val});
+      }
+    }, 2000);
+    this.setState({timer: timer});
+  }
+
+  getUserPostOneByOne(userPost){
+    const {id, title, body} = userPost;
+    return (
+        <div className="divHover userPost" key={id}>
+          <div><label className="boldFont">Title: </label>{title}</div>
+          <div><label className="boldFont">Body: </label>{body}</div>
+        </div>
+    );
+  }
+
+  startStopRenderingUserPost() {
+    if (this.state.startStopRenderPost) {
+      this.setState({
+        startStopRenderPost: false,
+        startStopButtonName: 'Start Post'
+      });
+    } else if (!this.state.startStopRenderPost) {
+      this.setState({
+        startStopRenderPost: true,
+        startStopButtonName: 'Stop Post'
+      });
+    }
+  }
+
+  hideUserPost() {
+    this.resetInterval();
+  }
 
   render() {
     return (
@@ -80,18 +116,18 @@ class ContentComponent extends Component {
             </div>
           </div>
           <div className="width50Percent middleContainer">
-            {this.renderUserPost()}
+            <div id="userPost">{this.state.userPostList}</div>
           </div>
           <div className="width20Percent textAlignCenter rightContainer">
             <div className="divDisplayNone" id="userPostButton">
               <ButtonComponent name="Show Post" onButtonClick={() => {
-                alert("Show Post");
+                this.renderUserPost();
               }}/>
-              <ButtonComponent name="Start / Stop Post" onButtonClick={() => {
-                alert("Start / Stop Post");
+              <ButtonComponent name={this.state.startStopButtonName} onButtonClick={() => {
+                this.startStopRenderingUserPost();
               }}/>
               <ButtonComponent name="Hide Post" onButtonClick={() => {
-                alert("Hide Post");
+                this.hideUserPost();
               }}/>
               </div>
           </div>

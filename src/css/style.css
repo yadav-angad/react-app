@@ -278,6 +278,7 @@
 .leftNavContainer {
     background-color: #f2f2f2;
     margin: 5px;
+    cursor: pointer;
 }
 
 .rightContainer {

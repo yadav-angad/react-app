@@ -18,7 +18,7 @@ export default class HeaderComponent extends Component {
     let timer = setInterval(() => {
       this.setState({clock: new Date().toLocaleTimeString()});
     }, 1000);
-    this.setState({timer: timer})
+    this.setState({timer: timer});
   }
 
   componentWillMount() {
