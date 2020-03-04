@@ -12,7 +12,7 @@ class ContentComponent extends Component {
       userPost: [],
       userPostList:[],
       startStopRenderPost: true,
-      startStopButtonName: 'Stop Post'
+      startStopButtonName: 'Start / Stop Post'
     };
   }
 
@@ -39,7 +39,7 @@ class ContentComponent extends Component {
         .then(res => res.json())
         .then((data) => {
           document.getElementById("userPostButton").style.display = "block";
-          document.getElementById("userPost").style.display = "block";
+          document.getElementById("userPostList").style.display = "block";
           this.setState({
             userPost: data
           });
@@ -47,8 +47,12 @@ class ContentComponent extends Component {
   };
 
   resetInterval() {
+    document.getElementById("userPostList").style.display = "none";
+    this.setState({
+      userPostList:[],
+      startStopButtonName: 'Start / Stop Post'
+    });
     clearInterval(this.state.timer);
-    document.getElementById("userPost").style.display = "none";
   }
 
   renderUserList() {
@@ -65,6 +69,7 @@ class ContentComponent extends Component {
   }
 
   renderUserPost() {
+    this.setState({startStopButtonName: 'Stop Post'});
     let counter = 0;
     let maxLength = this.state.userPost.length;
     let val = [];
@@ -116,7 +121,7 @@ class ContentComponent extends Component {
             </div>
           </div>
           <div className="width50Percent middleContainer">
-            <div id="userPost">{this.state.userPostList}</div>
+            <div id="userPostList">{this.state.userPostList}</div>
           </div>
           <div className="width20Percent textAlignCenter rightContainer">
             <div className="divDisplayNone" id="userPostButton">
