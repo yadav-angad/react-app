@@ -64,7 +64,7 @@ class ContentComponent extends Component {
     return (
         <div className="content">
           <br/>
-          <ButtonComponent onButtonClick={() => {
+          <ButtonComponent name="CLICK ME" onButtonClick={() => {
             this.updateState();
           }}/>
           <br/>

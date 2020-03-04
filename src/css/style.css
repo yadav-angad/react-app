@@ -88,18 +88,6 @@
     background-color: yellow;
 }
 
-.width80Percent {
-    width: 80%;
-}
-
-.width20Percent {
-    width: 20%;
-}
-
-.width95Percent {
-    width: 95%;
-}
-
 .unStyled-button {
     border: none;
     padding: 0;
@@ -109,12 +97,38 @@
 
 .clockSpan {
     display: block;
+    text-align: center;
+    padding-right: 20px;
+}
+
+.toggleClockButton {
     text-align: right;
     padding-right: 20px;
 }
 
 .tableDiv {
     width: 100%;
+}
+
+
+.width20Percent {
+    width: 20%;
+}
+
+.width30Percent {
+    width: 30%;
+}
+
+.width40Percent {
+    width: 40%;
+}
+
+.width80Percent {
+    width: 80%;
+}
+
+.width95Percent {
+    width: 95%;
 }
 
 .colDiv10 {
