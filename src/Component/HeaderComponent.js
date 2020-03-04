@@ -51,8 +51,8 @@ export default class HeaderComponent extends Component {
     return (
         <div>
           <div className="header1">
-            <div className="width30Percent ">Employee Attendance System</div>
-            <div className="width40Percent clockSpan">
+            <div className="width30Percent padding-left">Employee Attendance System</div>
+            <div className="width50Percent clockSpan">
               <span id="clockSpan">{this.state.clock}</span>
             </div>
             <div className="width20Percent toggleClockButton">
