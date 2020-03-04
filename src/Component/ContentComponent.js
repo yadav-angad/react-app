@@ -28,7 +28,7 @@ class ContentComponent extends Component {
           this.setState({
             userDetails: data
           });
-          this.renderUserList(this.state.userDetails);
+          this.renderUserList();
         })
         .catch(console.log);
   };
