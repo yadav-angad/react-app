@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ButtonComponent from "./ButtonComponent";
+import userImage from "../image/user-icon.png"
 
 class ContentComponent extends Component {
   items;
@@ -62,7 +63,10 @@ class ContentComponent extends Component {
           <a onClick={() => {
             this.fetchUserPost(id);
           }}>
-            <li className="divHover userDetailList leftNavContainer" key={id}>{name}</li>
+            <div className="divHover userDetailList leftNavContainer" key={id}>
+              <img src={userImage} alt="user image" className="imageSize"/>
+              <span> {name}</span>
+            </div>
           </a>
       )
     });
