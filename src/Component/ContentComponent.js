@@ -7,19 +7,15 @@ class ContentComponent extends Component {
     super(props);
     this.state = {
       notificationType: '',
-      contacts: ''
+      userDetails: [],
+      header:["ID", "Name", "UserName", "Email"],
+      headerElement: ''
     };
     this.updateState = this.updateState.bind(this);
   }
 
   componentDidMount() {
-    fetch('http://jsonplaceholder.typicode.com/users')
-        .then(res => res.json())
-        .then((data) => {
-          console.log("data : " + data);
-          this.setState({ contacts: data })
-        })
-        .catch(console.log)
+    console.log("componentDidMount called");
   }
 
   updateState() {
@@ -29,25 +25,59 @@ class ContentComponent extends Component {
     let alertContainer = document.getElementById("alertContainer");
     if (alertContainer !== null) {
       alertContainer.style.display = "block";
+      fetch('http://jsonplaceholder.typicode.com/users')
+          .then(res => res.json())
+          .then((data) => {
+            let result =  this.state.header.map((key, index) => {
+              return <th key={index}>{key.toUpperCase()}</th>
+            });
+            this.setState({
+              userDetails: data,
+              headerElement: result
+            });
+            this.renderTableHeader();
+            this.renderTableData(this.state.userDetails);
+          })
+          .catch(console.log);
     }
+  };
+
+  renderTableHeader() {
+
+  }
+
+  renderTableData() {
+    return this.state.userDetails.map((user, index) => {
+      const {id, name, username, email} = user;
+      return (
+          <tr key={id}>
+            <td className="colDiv10">{id}</td>
+            <td className="colDiv30">{name}</td>
+            <td className="colDiv30">{username}</td>
+            <td className="colDiv30">{email}</td>
+          </tr>
+      )
+    })
   };
 
   render() {
     return (
         <div className="content">
+          <br/>
           <ButtonComponent onButtonClick={() => {
             this.updateState();
           }}/>
           <br/>
+          <table className='userDetails'>
+            <thead>
+              {this.state.headerElement}
+            </thead>
+            <tbody>
+              {this.renderTableData()}
+            </tbody>
+          </table>
+          <br />
           <NotificationComponent notificationType={this.state.notificationType}/>
-          <h1>
-            {this.props.content}
-          </h1>
-          <ul>
-            {this.state.contacts(function(name, index){
-              return <li key={ index }>{name}</li>;
-            })}
-          </ul>
         </div>
     );
   }

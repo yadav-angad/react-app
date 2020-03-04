@@ -10,16 +10,33 @@
     justify-content: center;
     justify-items: center;
     align-items: center;
+    text-align: left;
+    padding-left: 10px;
 }
 
 .header2 {
     width: 100%;
     height: 10px;
-    background-color: #ffff00;
+    background-color: #F1C40F;
+}
+
+.headerTitle {
+    width: 100%;
+    height: 50px;
+    background-color: #367c2b;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-items: left;
+    align-items: center;
 }
 
 .content {
-    height: 515px;
+    height: 640px;
+    overflow: auto;
+    background-color: #cccccc;
 }
 
 .footer {
@@ -71,8 +88,12 @@
     background-color: yellow;
 }
 
+.width80Percent {
+    width: 80%;
+}
+
 .width20Percent {
-    float: right;
+    width: 20%;
 }
 
 .width95Percent {
@@ -84,4 +105,108 @@
     padding: 0;
     background: none;
     cursor: pointer;
+}
+
+.clockSpan {
+    display: block;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.tableDiv {
+    width: 100%;
+}
+
+.colDiv10 {
+    width: 10%;
+}
+
+.colDiv20 {
+    width: 20%;
+}
+
+.colDiv30 {
+    width: 30%;
+}
+
+.colDiv40 {
+    width: 40%;
+}
+
+.colDiv50 {
+    width: 50%;
+}
+
+.colDiv60 {
+    width: 60%;
+}
+
+.colDiv70 {
+    width: 70%;
+}
+
+.colDiv80 {
+    width: 80%;
+}
+
+.colDiv90 {
+    width: 90%;
+}
+
+.colDiv100 {
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-family: arial, sans-serif;
+}
+
+.userDetails {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 50%;
+}
+
+.userDetails td, .userDetails th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.userDetails tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.userDetails tr:hover {
+    background-color: #ddd;
+}
+
+.userDetails th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button {
+    background-color: #F1C40F;
+    border: none;
+    color: #333333;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #F4D03F;
 }
