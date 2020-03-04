@@ -55,7 +55,7 @@ export default class HeaderComponent extends Component {
             <div className="width40Percent clockSpan">
               <span id="clockSpan">{this.state.clock}</span>
             </div>
-            <div className="width30Percent toggleClockButton">
+            <div className="width20Percent toggleClockButton">
               <ButtonComponent name={this.state.buttonName} onButtonClick={() => {
                 this.showHideClock();
               }}/>

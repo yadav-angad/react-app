@@ -12,7 +12,7 @@ class App extends Component {
 
   render() {
     return (
-        <div align="center">
+        <div className="rootContainer">
           <HeaderComponent headerName="Training Site"/>
           <ContentComponent content="Hello World !!!"/>
           <FooterComponent/>

@@ -8,7 +8,7 @@ class NotificationComponent extends Component {
   render() {
     let notificationType = this.props.notificationType;
     let notificationDiv;
-    let styleName = notificationType + " vCenter";
+    let styleName = notificationType + " vCenterLeft";
     switch (notificationType) {
       case "info":
         notificationDiv = <span className="width95Percent">Info message</span>;

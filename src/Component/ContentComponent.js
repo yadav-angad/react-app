@@ -76,8 +76,8 @@ class ContentComponent extends Component {
     let timer = setInterval(() => {
       if(counter < maxLength && !!this.state.startStopRenderPost) {
         val[counter] = this.getUserPostOneByOne(this.state.userPost[counter]);
-        counter++;
         this.setState({userPostList: val});
+        counter++;
       }
     }, 2000);
     this.setState({timer: timer});

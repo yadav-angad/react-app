@@ -1,13 +1,9 @@
 import React from "react";
-import FooterImage from "../image/footer-image.png";
 
-export default function HeaderComponent(prop) {
+export default function FooterComponent() {
   return(
       <div>
-        <div>
-          <img className="footer" src={FooterImage} alt="Logo"/>
-          <h1>{prop.headerName}</h1>
-        </div>
+        <div className="footerBackground vCenter">Front End Development Training©</div>
       </div>
   );
 }
