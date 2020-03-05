@@ -151,8 +151,16 @@
     width: 10%;
 }
 
+.width15Percent {
+    width: 15%;
+}
+
 .width20Percent {
     width: 20%;
+}
+
+.width25Percent {
+    width: 25%;
 }
 
 .width30Percent {
@@ -167,8 +175,16 @@
     width: 50%;
 }
 
+.width55Percent {
+    width: 55%;
+}
+
 .width60Percent {
     width: 60%;
+}
+
+.width65Percent {
+    width: 65%;
 }
 
 .width70Percent {
@@ -364,6 +380,6 @@
 }
 
 .imageSize {
-    width: 35px;
-    height: 35px;
+    width: 10%;
+    height: 10%;
 }

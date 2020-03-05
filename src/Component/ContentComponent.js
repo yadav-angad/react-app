@@ -132,13 +132,13 @@ class ContentComponent extends Component {
   render() {
     return (
         <div className="content divLeftAlign" id="content">
-          <div className="width30Percent leftNavContainer">
+          <div className="width25Percent leftNavContainer">
             <div className="padding-left"><span className="userHeaderList">Users</span></div>
             <div className="textAlignLeft boldFont">
               <div>{this.renderUserList()}</div>
             </div>
           </div>
-          <div className="width50Percent middleContainer" id="middleContainer">
+          <div className="width55Percent middleContainer" id="middleContainer">
             <div id="userPostList">{this.state.userPostList}</div>
           </div>
           <div className="width20Percent textAlignCenter rightContainer">
