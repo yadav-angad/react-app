@@ -50,7 +50,7 @@ export default class HeaderComponent extends Component {
   render() {
     return (
         <div>
-          <div className="header1">
+          <div className="header1" id="header">
             <div className="width30Percent padding-left">Employee Attendance System</div>
             <div className="width50Percent clockSpan">
               <span id="clockSpan">{this.state.clock}</span>

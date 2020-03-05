@@ -33,7 +33,7 @@
 }
 
 .content {
-    height: 640px;
+    height: calc(100% - 50px - 53px);
     overflow: auto;
     width: 100%;
     background-color: #cccccc;
@@ -299,7 +299,7 @@
     background-color: #f2f2f2;
     margin: 5px;
     overflow: auto;
-    height: calc(100% - 5px - 5px);
+    height: auto;
 }
 
 .padding-left {

@@ -79,12 +79,20 @@ class ContentComponent extends Component {
   }
 
   renderUserPost() {
-    this.setState({startStopButtonName: 'Stop Post'});
+    let val = [];
     let counter = 0;
     let maxLength = this.state.userPost.length;
-    let val = [];
+    let headerHeight = document.getElementById("header").scrollHeight;
+    let footerHeight = document.getElementById("footer").scrollHeight;
+    let contentHeight = document.getElementById("content").scrollHeight;
+    let autoScrollHeight = (contentHeight - headerHeight - footerHeight);
+    this.setState({startStopButtonName: 'Stop Post'});
     let timer = setInterval(() => {
       if(counter < maxLength && !!this.state.startStopRenderPost) {
+        let middleContainerDivHeight = document.getElementById("middleContainer").scrollHeight;
+        if(autoScrollHeight < middleContainerDivHeight) {
+          document.getElementById("middleContainer").style.height = "calc(100% - 5px - 5px)";
+        }
         val[counter] = this.getUserPostOneByOne(this.state.userPost[counter]);
         this.setState({userPostList: val});
         counter++;
@@ -123,14 +131,14 @@ class ContentComponent extends Component {
 
   render() {
     return (
-        <div className="content divLeftAlign">
+        <div className="content divLeftAlign" id="content">
           <div className="width30Percent leftNavContainer">
             <div className="padding-left"><span className="userHeaderList">Users</span></div>
             <div className="textAlignLeft boldFont">
               <div>{this.renderUserList()}</div>
             </div>
           </div>
-          <div className="width50Percent middleContainer">
+          <div className="width50Percent middleContainer" id="middleContainer">
             <div id="userPostList">{this.state.userPostList}</div>
           </div>
           <div className="width20Percent textAlignCenter rightContainer">
