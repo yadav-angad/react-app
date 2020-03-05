@@ -35,9 +35,8 @@ class ContentComponent extends Component {
   };
 
   fetchUserPost(id) {
-    this.resetInterval();
     if(this.state.previousSelectedUserId !== null) {
-      console.log('==>' + this.state.previousSelectedUserId);
+      this.resetInterval();
       document.getElementById(this.state.previousSelectedUserId).style.backgroundColor = "#f2f2f2";
     }
     fetch('https://jsonplaceholder.typicode.com/posts?userId=' + id)
@@ -54,12 +53,13 @@ class ContentComponent extends Component {
   };
 
   resetInterval() {
-    document.getElementById("userPostList").style.display = "none";
     this.setState({
       userPostList:[],
       startStopButtonName: 'Start / Stop Post'
     });
     clearInterval(this.state.timer);
+    document.getElementById("userPostList").style.display = "none";
+    document.getElementById("middleContainer").style.height = "auto";
   }
 
   renderUserList() {

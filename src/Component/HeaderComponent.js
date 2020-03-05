@@ -62,6 +62,7 @@ export default class HeaderComponent extends Component {
             </div>
           </div>
           <div className="header2"/>
+          <div className="header3"/>
         </div>
     );
   }
