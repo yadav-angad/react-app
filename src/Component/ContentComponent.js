@@ -63,10 +63,10 @@ class ContentComponent extends Component {
   }
 
   renderUserList() {
-    return this.state.userDetails.map((user, index) => {
+    return this.state.userDetails.map((user) => {
       const {id, name} = user;
       return (
-          <a onClick={() => {
+          <a key={id} onClick={() => {
             this.fetchUserPost(id);
           }}>
             <div id={id} className="divHover userDetailList leftNavContainer" key={id}>
