@@ -1,5 +1,12 @@
 import React, {Component} from "react";
 import ButtonComponent from "./ButtonComponent";
+import HomeIcon from "../image/home-icon.png";
+import {Route, Switch} from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
+import EmployeeController from "../controller/EmployeeController";
+import Error from "./Error";
+import NavigationComponent from "./NavigationComponent";
 
 export default class HeaderComponent extends Component {
   clock = new Date().toLocaleTimeString();
@@ -51,7 +58,16 @@ export default class HeaderComponent extends Component {
     return (
         <div>
           <div className="header1" id="header">
-            <div className="width30Percent padding-left">Employee Attendance System</div>
+            <div className="width30Percent padding-left displayFlexRow">
+              <div className="width20Percent displayFlexRow">
+                <img src={HomeIcon} alt="home-icon" className="homeIconSize cursor" onClick={() => {
+                  alert("Home Called");
+                }}/>
+              </div>
+              <div className="width85Percent displayFlexRow">
+                <span>&nbsp;Employee Attendance System</span>
+              </div>
+            </div>
             <div className="width50Percent clockSpan">
               <span id="clockSpan">{this.state.clock}</span>
             </div>
@@ -63,6 +79,7 @@ export default class HeaderComponent extends Component {
           </div>
           <div className="header2"/>
           <div className="header3"/>
+          <NavigationComponent/>
         </div>
     );
   }

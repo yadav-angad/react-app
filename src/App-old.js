@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import './css/style.css'
-import ButtonComponent from "./Component/ButtonComponent";
-import HeaderComponent from "./Component/HeaderComponent";
-import ContentComponent from "./Component/ContentComponent";
-import FooterComponent from "./Component/FooterComponent";
+import ButtonComponent from "./component/ButtonComponent";
+import HeaderComponent from "./component/HeaderComponent";
+import ContentComponent from "./component/ContentComponent";
+import FooterComponent from "./component/FooterComponent";
 
 class App extends Component {
   render() {

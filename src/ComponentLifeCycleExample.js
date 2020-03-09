@@ -23,25 +23,25 @@ class ComponentLifeCycleExample extends React.Component {
 }
 class Content extends React.Component {
   componentWillMount() {
-    console.log('Component WILL MOUNT!')
+    console.log('component WILL MOUNT!')
   }
   componentDidMount() {
-    console.log('Component DID MOUNT!')
+    console.log('component DID MOUNT!')
   }
   componentWillReceiveProps(newProps) {
-    console.log('Component WILL RECEIVE PROPS!')
+    console.log('component WILL RECEIVE PROPS!')
   }
   shouldComponentUpdate(newProps, newState) {
     return true;
   }
   componentWillUpdate(nextProps, nextState) {
-    console.log('Component WILL UPDATE!');
+    console.log('component WILL UPDATE!');
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('Component DID UPDATE!')
+    console.log('component DID UPDATE!')
   }
   componentWillUnmount() {
-    console.log('Component WILL UNMOUNT!')
+    console.log('component WILL UNMOUNT!')
   }
   render() {
     return (
