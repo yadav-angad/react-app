@@ -71,7 +71,7 @@ class EmployeeController extends Component {
     return (
         <div className="content divLeftAlign" id="content">
           <div className="width20Percent leftNavContainer">
-            <div className="padding-left">
+            <div className="padding10px">
               <div className="divButton" onClick={() => {
                 this.renderEmployeeDetails();
               }}>View Employee List</div>

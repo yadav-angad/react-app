@@ -186,7 +186,7 @@ class ContentComponent extends Component {
     return (
         <div className="content divLeftAlign" id="content">
           <div className="width25Percent leftNavContainer">
-            <div className="padding-left">
+            <div className="padding10px">
               <div><a href="#" onClick={() => {
                 this.renderEmployeeDetails();
               }}>Employee Details</a></div>

@@ -53,7 +53,7 @@ export default class HeaderComponent extends Component {
     return (
         <div>
           <div className="header1" id="header">
-            <div className="width30Percent padding-left displayFlexRow">
+            <div className="width30Percent padding10px displayFlexRow">
               <div className="width20Percent displayFlexRow">
                 <img src={HomeIcon} alt="home-icon" className="homeIconSize cursor" onClick={() => {
                   alert("Home Called");

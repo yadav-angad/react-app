@@ -134,7 +134,7 @@ export default class UserComponent extends Component {
     return (
         <div className="content divLeftAlign" id="content">
           <div className="width25Percent leftNavContainer">
-            <div className="padding-left">
+            <div className="padding10px">
               <div className="userHeaderList">Users</div>
             </div>
             <div className="textAlignLeft boldFont">
