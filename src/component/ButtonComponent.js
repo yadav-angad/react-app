@@ -1,7 +1,11 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 export default function ButtonComponent(prop){
-  return (<div>
+  return (<>
     <button className="button" onClick={prop.onButtonClick}>{prop.name}</button>
-  </div>);
+  </>);
+}
+
+ButtonComponent.propTypes = {
+  name: PropTypes.string.isRequired
 }

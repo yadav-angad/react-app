@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import ButtonComponent from "./ButtonComponent";
 import HomeIcon from "../image/home-icon.png";
 import NavigationComponent from "./NavigationComponent";
+import PropTypes from "prop-types";
 
 export default class HeaderComponent extends Component {
   clock = new Date().toLocaleTimeString();
@@ -60,7 +61,7 @@ export default class HeaderComponent extends Component {
                 }}/>
               </div>
               <div className="width85Percent displayFlexRow">
-                <span>&nbsp;Employee Attendance System</span>
+                <span>&nbsp;{this.props.headerName}</span>
               </div>
             </div>
             <div className="width50Percent clockSpan">
@@ -79,3 +80,7 @@ export default class HeaderComponent extends Component {
     );
   }
 }
+
+HeaderComponent.propTypes = {
+  headerName: PropTypes.string.isRequired
+};

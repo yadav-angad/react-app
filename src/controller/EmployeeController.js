@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ButtonComponent from "../component/ButtonComponent";
 
 class EmployeeController extends Component {
   constructor(props) {
