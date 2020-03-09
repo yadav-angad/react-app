@@ -70,10 +70,12 @@ class EmployeeController extends Component {
   render() {
     return (
         <div className="content divLeftAlign" id="content">
-          <div>
-            <ButtonComponent name="Get Employee Details" onButtonClick={() => {
-              this.renderEmployeeDetails();
-            }}/>
+          <div className="width20Percent leftNavContainer">
+            <div className="padding-left">
+              <div className="divButton" onClick={() => {
+                this.renderEmployeeDetails();
+              }}>View Employee List</div>
+            </div>
           </div>
           <div className="width80Percent middleContainer" id="middleContainer">
             {this.state.middleContainer}

@@ -85,6 +85,23 @@
     font-size: large;
 }
 
+.divButton {
+    background-color: #F1C40F;
+    border: none;
+    color: #333333;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 1vw;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    outline: none;
+    width: 90%;
+}
+
 .divLeftAlign {
     display: flex;
     flex-direction: row;
@@ -198,6 +215,10 @@
 
 .width80Percent {
     width: 80%;
+}
+
+.width85Percent {
+    width: 85%;
 }
 
 .width90Percent {
