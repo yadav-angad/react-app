@@ -1,15 +1,46 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
 
-const NavigationComponent = () => {
-  return (
-      <div className="header4 displayFlexRow padding-left">
-        <NavLink className="menuItem" to="/about">About</NavLink>
-        <NavLink className="menuItem" to="/">Home</NavLink>
-        <NavLink className="menuItem" to="/employee">Employee</NavLink>
-        <NavLink className="menuItem" to="/user">User</NavLink>
-      </div>
-  );
+class NavigationComponent extends Component {
+  constructor(prop) {
+    super(prop);
+    this.state = {
+      previousSelectedMenuItem: ''
+    }
+  }
+
+  selectedMenu(id) {
+    if (!!this.state.previousSelectedMenuItem) {
+      document.getElementById(this.state.previousSelectedMenuItem).style.textDecoration = "none";
+      this.highlightMenuItem(id);
+    } else {
+      this.highlightMenuItem(id);
+    }
+  }
+
+  highlightMenuItem(id) {
+    this.setState({previousSelectedMenuItem: id});
+    document.getElementById(id).style.textDecoration = "underline";
+  }
+
+  render() {
+    return (
+        <div className="header4 displayFlexRow">
+          <NavLink id="about" className="menuItem" to="/about" onClick={() => {
+            this.selectedMenu("about");
+          }}>About</NavLink>
+          <NavLink id="home" className="menuItem" to="/" onClick={() => {
+            this.selectedMenu("home");
+          }}>Home</NavLink>
+          <NavLink id="employee" className="menuItem" to="/employee" onClick={() => {
+            this.selectedMenu("employee");
+          }}>Employee</NavLink>
+          <NavLink id="user" className="menuItem" to="/user" onClick={() => {
+            this.selectedMenu("user");
+          }}>User</NavLink>
+        </div>
+    );
+  }
 };
 
 export default NavigationComponent;

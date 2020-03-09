@@ -4,7 +4,6 @@ const About = () => {
   return (
       <div className="content divLeftAlign" id="content">
         <h1>About US</h1>
-        <p>About US page body content</p>
       </div>
   );
 };
