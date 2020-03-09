@@ -1,11 +1,6 @@
 import React, {Component} from "react";
 import ButtonComponent from "./ButtonComponent";
 import HomeIcon from "../image/home-icon.png";
-import {Route, Switch} from "react-router-dom";
-import About from "./About";
-import Home from "./Home";
-import EmployeeController from "../controller/EmployeeController";
-import Error from "./Error";
 import NavigationComponent from "./NavigationComponent";
 
 export default class HeaderComponent extends Component {

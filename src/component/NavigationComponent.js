@@ -7,6 +7,7 @@ const NavigationComponent = () => {
         <NavLink className="menuItem" to="/about">About</NavLink>
         <NavLink className="menuItem" to="/">Home</NavLink>
         <NavLink className="menuItem" to="/employee">Employee</NavLink>
+        <NavLink className="menuItem" to="/user">User</NavLink>
       </div>
   );
 }

@@ -3,13 +3,12 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './css/App.css';
 import './css/style.css'
 import HeaderComponent from "./component/HeaderComponent";
-import ContentComponent from "./component/ContentComponent";
 import FooterComponent from "./component/FooterComponent";
-import NavigationComponent from "./component/NavigationComponent";
 import About from "../../react-app/src/component/About";
 import Home from "../../react-app/src/component/Home";
 import EmployeeController from "./controller/EmployeeController";
 import Error from "../../react-app/src/component/Error";
+import UserController from "./controller/UserController";
 
 class App extends Component {
   constructor(props) {
@@ -24,7 +23,8 @@ class App extends Component {
             <Switch>
               <Route path="/about" component={About}/>
               <Route path="/" component={Home} exact/>
-              <Route path="/Employee" component={EmployeeController}/>
+              <Route path="/employee" component={EmployeeController}/>
+              <Route path="/user" component={UserController}/>
               <Route component={Error}/>
             </Switch>
             <FooterComponent/>
