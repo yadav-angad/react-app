@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import ButtonComponent from "../component/ButtonComponent";
+import {Link} from "react-router-dom";
 
 const fruits = ['Banana', 'Apple', 'Grape', 'Orange', 'Pears'];
 const gender = [
@@ -168,6 +169,23 @@ export default class UserFormController extends Component {
               </div>
             </form>
           </div>
+          <ul>
+            <li>
+              <a>
+                <Link to="/userData/1?fName=Angad&lName=Yadav" >Angad</Link>
+              </a>
+            </li>
+            <li>
+              <a>
+                <Link to="/userData/2?fName=Test1&lName=Yadav" >Test1</Link>
+              </a>
+            </li>
+            <li>
+              <a>
+                <Link to="/userData/3?fName=Test2&lName=Yadav" >Test2</Link>
+              </a>
+            </li>
+          </ul>
         </div>
     );
   }

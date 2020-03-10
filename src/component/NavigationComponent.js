@@ -26,6 +26,9 @@ class NavigationComponent extends Component {
   render() {
     return (
         <div className="header4 displayFlexRow">
+          <NavLink id="login" className="menuItem" to="/login" onClick={() => {
+            this.selectedMenu("login");
+          }} activeClassName="active">Login</NavLink>
           <NavLink id="about" className="menuItem" to="/about" onClick={() => {
             this.selectedMenu("about");
           }} activeClassName="active">About</NavLink>

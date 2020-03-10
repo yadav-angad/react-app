@@ -1,11 +1,9 @@
 import React from 'react';
 
-const Error = () => {
+export const Login = () => {
   return (
       <div className="content divLeftAlign" id="content">
-        <p>Error: Page does not exist!</p>
+        <h1>Login Page</h1>
       </div>
   );
 };
-
-export default Error;
