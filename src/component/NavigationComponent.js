@@ -41,6 +41,9 @@ class NavigationComponent extends Component {
           <NavLink id="loadUserPost" className="menuItem" to="/loadUserPost" onClick={() => {
             this.selectedMenu("loadUserPost");
           }}>LoadUserPost</NavLink>
+          <NavLink id="userForm" className="menuItem" to="/userForm" onClick={() => {
+            this.selectedMenu("userForm");
+          }}>User Form</NavLink>
         </div>
     );
   }
