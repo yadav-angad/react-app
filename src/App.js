@@ -20,23 +20,21 @@ class App extends Component {
 
   render() {
     return (
-        <BrowserRouter basename="/">
-          <div className="rootContainer">
-            <ErrorHandling>
-              <HeaderComponent headerName="FED Training"/>
-              <Switch>
-                <Route path="/about" component={About}/>
-                <Route path="/" component={Home} exact/>
-                <Route path="/employee" component={EmployeeController}/>
-                <Route path="/user" component={UserController}/>
-                <Route path="/loadUserPost" component={LoadUserPostController}/>
-                <Route path="/userForm" component={UserFormController}/>
-                <Route component={Error}/>
-              </Switch>
-              <FooterComponent/>
-            </ErrorHandling>
-          </div>
-        </BrowserRouter>
+        <div className="rootContainer">
+          <ErrorHandling>
+            <HeaderComponent headerName="FED Training"/>
+            <Switch>
+              <Route path="/about" component={About}/>
+              <Route path="/" component={Home} exact/>
+              <Route path="/employee" component={EmployeeController}/>
+              <Route path="/user" component={UserController}/>
+              <Route path="/loadUserPost" component={LoadUserPostController}/>
+              <Route path="/userForm" component={UserFormController}/>
+              <Route component={Error}/>
+            </Switch>
+            <FooterComponent/>
+          </ErrorHandling>
+        </div>
     );
   }
 }
