@@ -28,22 +28,22 @@ class NavigationComponent extends Component {
         <div className="header4 displayFlexRow">
           <NavLink id="about" className="menuItem" to="/about" onClick={() => {
             this.selectedMenu("about");
-          }}>About</NavLink>
+          }} activeClassName="active">About</NavLink>
           <NavLink id="home" className="menuItem" to="/" onClick={() => {
             this.selectedMenu("home");
-          }}>Home</NavLink>
+          }} activeClassName="active">Home</NavLink>
           <NavLink id="employee" className="menuItem" to="/employee" onClick={() => {
             this.selectedMenu("employee");
-          }}>Employee</NavLink>
+          }} activeClassName="active">Employee</NavLink>
           <NavLink id="user" className="menuItem" to="/user" onClick={() => {
             this.selectedMenu("user");
-          }}>User</NavLink>
+          }} activeClassName="active">User</NavLink>
           <NavLink id="loadUserPost" className="menuItem" to="/loadUserPost" onClick={() => {
             this.selectedMenu("loadUserPost");
-          }}>LoadUserPost</NavLink>
+          }} activeClassName="active">LoadUserPost</NavLink>
           <NavLink id="userForm" className="menuItem" to="/userForm" onClick={() => {
             this.selectedMenu("userForm");
-          }}>User Form</NavLink>
+          }} activeClassName="active">User Form</NavLink>
         </div>
     );
   }

@@ -1,4 +1,11 @@
 import React, {Component} from "react";
+import ButtonComponent from "../component/ButtonComponent";
+
+const fruits = ['Banana', 'Apple', 'Grape', 'Orange', 'Pears'];
+const gender = [
+  {"label": "Male", "value": "male"},
+  {"label": "Female", "value": "female"}
+];
 
 export default class UserFormController extends Component {
   constructor(props) {
@@ -6,22 +13,35 @@ export default class UserFormController extends Component {
     this.state = {
       name: '',
       email: '',
-      agree: '',
-      group1: '',
-      selectDropdown: ''
-
-
+      agree: false,
+      gender: '',
+      selectDropdown: 'Apple',
+      aboutYou: ''
     }
   }
 
-  clearForm = () => {
+  resetHandler = (e) => {
+    e.preventDefault();
+    this.clearForm();
+  };
 
+  clearForm = () => {
+    this.setState({
+      name: '',
+      email: '',
+      agree: false,
+      gender: '',
+      selectDropdown: 'Apple',
+      aboutYou: ''
+    })
   };
 
   handleInputChange = event => {
     const target = event.target;
-    const value = target.type === "checked" ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
+
+    console.log("name : " + name + " value : " + value);
 
     this.setState({
       [name]: value
@@ -30,95 +50,121 @@ export default class UserFormController extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log('form Submitted : ' + this.state);
+    console.log('form Submitted : ', this.state);
   };
 
 
+  renderDropDown() {
+    return fruits.map((value, index) => {
+      return (
+          <option key={value + index} value={value + index}>{value}</option>
+      );
+    });
+  }
+
+  renderGenderSection() {
+    return gender.map(({label, value}, index) => {
+      return (
+          <div key={index}>
+            <input id="radio1"
+                   type="radio"
+                   name="gender"
+                   value={value}
+                   onChange={this.handleInputChange}/>
+            <label htmlFor="radio1">{label}</label>
+          </div>
+      )
+    })
+  }
 
   render() {
     return (
         <div className="content width100Percent" id="content">
-          <div className="displayFlexRowCenter">
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <label htmlFor="name">Name</label>
-                <input type="text"
-                       name="name"
-                       value=""
-                       placeholder="Enter Name"
-                       onChange={this.handleInputChange}/>
+          <div className="width100Percent displayFlexRowCenter">
+            <form onSubmit={this.handleSubmit} className="width40Percent middleContainer">
+              <div className="width90Percent displayFlexRowCenter">
+                <h3>Fill User Details and Submit</h3>
               </div>
-              <div>
-                <label htmlFor="email">Email</label>
-                <input type="text"
-                       name="email"
-                       value=""
-                       placeholder="Enter e-mail address"
-                       onChange={this.handleInputChange}/>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRow">
+                  <label htmlFor="name">Name</label>
+                </div>
+                <div className="width80Percent displayFlexRow">
+                  <input type="text"
+                         name="name"
+                         size="55"
+                         value={this.state.name}
+                         placeholder="Enter Name"
+                         onChange={this.handleInputChange}/>
+                </div>
               </div>
-              <div>
-                <label htmlFor="agree">Do you agree</label>
-                <input type="checkbox"
-                       name="agree"
-                       onChange={this.handleInputChange}/>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRow">
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className="width80Percent displayFlexRow">
+                  <input type="text"
+                         name="email"
+                         size="55"
+                         value={this.state.email}
+                         placeholder="Enter e-mail address"
+                         onChange={this.handleInputChange}/>
+                </div>
               </div>
-              <div>
-                <label htmlFor="group1">Which do you prefer</label>
-                <p>
-                  <label htmlFor="radio1">Option 1</label>
-                  <input id="radio1" type="radio" name="group1" value="option1" onChange={this.handleInputChange}/>
-                </p>
-                <p>
-                  <label htmlFor="radio2">Option 2</label>
-                  <input id="radio2" type="radio" name="group1" value="option2" checked onChange={this.handleInputChange}/>
-                </p>
-                <p>
-                  <label htmlFor="radio3">Option 3</label>
-                  <input id="radio3" type="radio" name="group1" value="option3" onChange={this.handleInputChange}/>
-                </p>
-                OR these options?
-                <p>
-                  <label htmlFor="radio4">Option 1</label>
-                  <input id="radio4" type="radio" name="group2" value="option4" onChange={this.handleInputChange}/>
-                </p>
-                <p>
-                  <label htmlFor="radio5">Option 2</label>
-                  <input id="radio5" type="radio" name="group2" value="option5" onChange={this.handleInputChange}/>
-                </p>
-                <p>
-                  <label htmlFor="radio6">Option 3</label>
-                  <input id="radio6" type="radio" name="group2" value="option6" checked onChange={this.handleInputChange}/>
-                </p>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRow">
+                  <label htmlFor="gender">Gender</label>
+                </div>
+                <div className="width20Percent displayFlexColumnAlignItemsLeft">
+                  {this.renderGenderSection()}
+                </div>
               </div>
-              <div>
-                <label htmlFor="textarea">Text Area</label>
-                <textarea id="textarea" name="textarea" onChange={this.handleInputChange} value="hello" />
-              </div>
-              <div>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRow">
                   <label htmlFor="selectDropdown">Select</label>
-                  <select id="select-dropdown" name="selectDropdown" onChange={this.handleInputChange} value="2">
-                    <option value="0">Banana</option>
-                    <option value="1">Apple</option>
-                    <option value="2">Grape</option>
-                    <option value="3">Orange</option>
-                    <option value="4">Pair</option>
-                    <option value="5">Avocado</option>
+                </div>
+                <div className="width80Percent displayFlexRow">
+                  <select id="select-dropdown"
+                          name="selectDropdown"
+                          onChange={this.handleInputChange}
+                          value={this.state.selectDropdown}>
+                    {this.renderDropDown()}
                   </select>
+                </div>
               </div>
-              <div>
-                <button type="reset">
-                  Reset
-                </button>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRow">
+                  <label htmlFor="aboutYou">About You</label>
+                </div>
+                <div className="width80Percent displayFlexRow">
+                  <textarea id="aboutYou"
+                            name="aboutYou"
+                            onChange={this.handleInputChange}
+                            placeholder="Describe about you in 200 words."
+                            rows="5"
+                            cols="50"
+                            value={this.state.aboutYou}/>
+                </div>
               </div>
-              <div>
-                <button type="submit">
-                  Submit
-                </button>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width20Percent displayFlexRowCenterFloatRight">
+                  <input type="checkbox"
+                         name="agree"
+                         checked={this.state.agree}
+                         onChange={this.handleInputChange}/>
+                </div>
+                <div className="width80Percent displayFlexRow">
+                  <label htmlFor="agree">Agree to Terms and Conditions: </label>
+                </div>
+
               </div>
-              <div>
-                <button type="button">
-                  Button
-                </button>
+              <div className="width90Percent displayFlexRow padding10px">
+                <div className="width50Percent displayFlexRowCenterFloatRight padding10px">
+                  <ButtonComponent name="Submit" onButtonClick={this.handleSubmit}/>
+                </div>
+                <div className="width50Percent displayFlexRowCenterFloatLeft padding10px">
+                  <ButtonComponent name="Reset" onButtonClick={this.handleSubmit}/>
+                </div>
               </div>
             </form>
           </div>
