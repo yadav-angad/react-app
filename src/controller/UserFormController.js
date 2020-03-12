@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import ButtonComponent from "../component/ButtonComponent";
 import {Link} from "react-router-dom";
+import "react-bootstrap/"
 
 const fruits = ['Banana', 'Apple', 'Grape', 'Orange', 'Pears'];
 const gender = [
@@ -83,14 +84,14 @@ export default class UserFormController extends Component {
         <div className="content width100Percent" id="content">
           <div className="width100Percent displayFlexRowCenter">
             <form onSubmit={this.handleSubmit} className="width40Percent middleContainer">
-              <div className="width90Percent displayFlexRowCenter">
+              <div className="displayFlexRowCenter">
                 <h3>Fill User Details and Submit</h3>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow padding10px">
                 <div className="width20Percent displayFlexRow">
                   <label htmlFor="name">Name</label>
                 </div>
-                <div className="width80Percent displayFlexRow">
+                <div className="width80Percent displayFlexRow field">
                   <input type="text"
                          name="name"
                          size="55"
@@ -99,7 +100,7 @@ export default class UserFormController extends Component {
                          onChange={this.handleInputChange}/>
                 </div>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow padding10px">
                 <div className="width20Percent displayFlexRow">
                   <label htmlFor="email">Email</label>
                 </div>
@@ -112,7 +113,7 @@ export default class UserFormController extends Component {
                          onChange={this.handleInputChange}/>
                 </div>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow padding10px">
                 <div className="width20Percent displayFlexRow">
                   <label htmlFor="gender">Gender</label>
                 </div>
@@ -120,7 +121,7 @@ export default class UserFormController extends Component {
                   {this.renderGenderSection()}
                 </div>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow padding10px">
                 <div className="width20Percent displayFlexRow">
                   <label htmlFor="selectDropdown">Select</label>
                 </div>
@@ -133,7 +134,7 @@ export default class UserFormController extends Component {
                   </select>
                 </div>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow padding10px">
                 <div className="width20Percent displayFlexRow">
                   <label htmlFor="aboutYou">About You</label>
                 </div>
@@ -147,19 +148,17 @@ export default class UserFormController extends Component {
                             value={this.state.aboutYou}/>
                 </div>
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
-                <div className="width20Percent displayFlexRowCenterFloatRight">
+              <div className="displayFlexRow padding10px">
+                <div className="displayFlexRow">
                   <input type="checkbox"
                          name="agree"
                          checked={this.state.agree}
                          onChange={this.handleInputChange}/>
-                </div>
-                <div className="width80Percent displayFlexRow">
                   <label htmlFor="agree">Agree to Terms and Conditions: </label>
                 </div>
 
               </div>
-              <div className="width90Percent displayFlexRow padding10px">
+              <div className="displayFlexRow">
                 <div className="width50Percent displayFlexRowCenterFloatRight padding10px">
                   <ButtonComponent name="Submit" onButtonClick={this.handleSubmit}/>
                 </div>
@@ -171,19 +170,13 @@ export default class UserFormController extends Component {
           </div>
           <ul>
             <li>
-              <a>
-                <Link to="/userData/1?fName=Angad&lName=Yadav" >Angad</Link>
-              </a>
+              <Link to="/userData/1?fName=Angad&lName=Yadav">Angad</Link>
             </li>
             <li>
-              <a>
-                <Link to="/userData/2?fName=Test1&lName=Yadav" >Test1</Link>
-              </a>
+              <Link to="/userData/2?fName=Test1&lName=Yadav">Test1</Link>
             </li>
             <li>
-              <a>
-                <Link to="/userData/3?fName=Test2&lName=Yadav" >Test2</Link>
-              </a>
+              <Link to="/userData/3?fName=Test2&lName=Yadav">Test2</Link>
             </li>
           </ul>
         </div>

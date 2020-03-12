@@ -47,6 +47,9 @@ class NavigationComponent extends Component {
           <NavLink id="userForm" className="menuItem" to="/userForm" onClick={() => {
             this.selectedMenu("userForm");
           }} activeClassName="active">User Form</NavLink>
+          <NavLink id="ticTacToe" className="menuItem" to="/ticTacToe" onClick={() => {
+            this.selectedMenu("ticTacToe");
+          }} activeClassName="active">TicTacToe</NavLink>
         </div>
     );
   }

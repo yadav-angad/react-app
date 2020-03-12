@@ -13,6 +13,7 @@ import LoadUserPostController from "./controller/LoadUserPostController";
 import ErrorHandling from "./exception/ErrorHandling";
 import UserFormController from "./controller/UserFormController";
 import UserData from "./component/UserData";
+import TicTacToeController from "./controller/TicTacToeController";
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
               <Route path="/loadUserPost" component={LoadUserPostController}/>
               <Route path="/userForm" component={UserFormController}/>
               <Route path="/userData/:id" component={UserData} />
+              <Route path="/ticTacToe" component={TicTacToeController} />
               <Route component={Error}/>
             </Switch>
             <FooterComponent/>
