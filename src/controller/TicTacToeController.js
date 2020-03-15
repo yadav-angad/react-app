@@ -11,7 +11,18 @@ export default class TicTacToeController extends Component {
       tic: '',
       counter: 1,
       player1Selection: 'X',
-      player2Selection: '0'
+      player2Selection: '0',
+      tic1: '',
+      tic2: '',
+      tic3: '',
+      tic4: '',
+      tic5: '',
+      tic6: '',
+      tic7: '',
+      tic8: '',
+      tic9: '',
+      winningCombination: [['tic1', 'tic2', 'tic3'], ['tic4', 'tic5', 'tic6'], ['tic7', 'tic8', 'tic9'], ['tic1', 'tic4', 'tic7'],
+        ['tic2', 'tic5', 'tic7'], ['tic3', 'tic6', 'tic9'], ['tic1', 'tic5', 'tic9'], ['tic3', 'tic5', 'tic7']]
     };
   }
 
@@ -19,7 +30,6 @@ export default class TicTacToeController extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    console.log(name + " :: " + value);
     let player1 = '';
     let player2 = '';
     if (value === 'playerSelected0') {
@@ -36,25 +46,82 @@ export default class TicTacToeController extends Component {
     });
   };
 
+  checkWinningCombination(name, ticTacToe) {
+    console.log('name : ' + name + ' :: ticTacToe : ' + ticTacToe + " this.state.tic1 :: " + this.state.tic1);
+    if (this.state.tic1 === ticTacToe && this.state.tic2 === ticTacToe && this.state.tic3 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic4 === ticTacToe && this.state.tic5 === ticTacToe && this.state.tic6 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic7 === ticTacToe && this.state.tic8 === ticTacToe && this.state.tic9 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic1 === ticTacToe && this.state.tic4 === ticTacToe && this.state.tic7 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic2 === ticTacToe && this.state.tic5 === ticTacToe && this.state.tic8 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic3 === ticTacToe && this.state.tic6 === ticTacToe && this.state.tic9 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic1 === ticTacToe && this.state.tic5 === ticTacToe && this.state.tic9 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    } else if (this.state.tic3 === ticTacToe && this.state.tic5 === ticTacToe && this.state.tic7 === ticTacToe) {
+      console.log(ticTacToe + ' is winner');
+    }
+
+    // this.state.winningCombination.forEach(function(items) {
+    //   if(items[0] === ticTacToe && items[1] === ticTacToe && items[2] === ticTacToe) {
+    //     console.log(ticTacToe + ' is winner');
+    //   }
+    // });
+  }
+
+  boxAlreadyFilled(boxId) {
+    switch (boxId) {
+      case "tic1":
+        return (!this.state.tic1);
+      case "tic2":
+        return (!this.state.tic2);
+      case "tic3":
+        return (!this.state.tic3);
+      case "tic4":
+        return (!this.state.tic4);
+      case "tic5":
+        return (!this.state.tic5);
+      case "tic6":
+        return (!this.state.tic6);
+      case "tic7":
+        return (!this.state.tic7);
+      case "tic8":
+        return (!this.state.tic8);
+      case "tic9":
+        return (!this.state.tic9);
+    }
+
+    return true;
+  }
+
   handleInputChange = event => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    let ticTacToe = '';
+
     if (this.state.player1 || this.state.player2) {
-      if (this.state.counter % 2 === 0) {
-        ticTacToe = this.setFunction();
-      } else {
-        ticTacToe = this.setFunction();
+      if (this.state.counter % 2 === 0 && this.boxAlreadyFilled(name)) {
+        this.fillBox(name);
+      } else if (this.state.counter % 2 !== 0 && this.boxAlreadyFilled(name)) {
+        this.fillBox(name);
       }
-      this.setState({
-        [name]: ticTacToe,
-        counter: this.state.counter + 1
-      });
     } else {
       alert('Please select X or 0');
     }
   };
+
+  fillBox(name) {
+    let ticTacToe = this.setFunction();
+    this.setState({
+      [name]: ticTacToe,
+      counter: this.state.counter + 1
+    });
+    this.checkWinningCombination(name, ticTacToe);
+  }
 
   setFunction() {
     if (this.state.player1 && this.state.player1 === '0') {
@@ -171,12 +238,8 @@ export default class TicTacToeController extends Component {
                         onClick={this.handleInputChange}>{this.state.tic9}</button>
               </div>
             </div>
-            {/*<svg >*/}
-            {/*  <line x1="0" y1="-200" x2="200" y2="800" className="lineStyle"/>*/}
-            {/*</svg>*/}
           </div>
         </div>
     );
   }
-
 }
